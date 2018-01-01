@@ -1,0 +1,17 @@
+[data-tier="1"] + [data-tier="2"],
+[data-tier="2"] + [data-tier="3"],
+[data-tier="3"] + [data-tier="4"] {
+  margin-top: 2rem;
+}
+.category {
+  display: block;
+}
+input[type="checkbox"]:checked + [name="title"] {
+  text-decoration: line-through;
+}
+.completed {
+  display: none;
+}
+input[type="checkbox"]:checked + [name="title"] + .completed {
+  display: inline;
+}
