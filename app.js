@@ -101,13 +101,6 @@ var buildBookList = function (list) {
 // fetch book list
 //---------------------------------
 var fetchBookList = function (user) {
-  var getDefaultList = function () {
-    return new Promise(function (resolve, reject) {
-      $.get('https://www.jasonbase.com/things/jje8.json', function (res) {
-        resolve(res.items);
-      });
-    });
-  };
   var getUserList = function () {
     return new Promise(function (resolve, reject) {
       // does this user have a list?
@@ -116,11 +109,9 @@ var fetchBookList = function (user) {
           bookList = res[0].list;
           buildBookList(bookList);
         } else {
-          getDefaultList().then(function (data) {
-            bookList = data;
-            buildBookList(bookList);
-            editBookList(user, true);
-          });
+          bookList = window.list;
+          buildBookList(bookList);
+          editBookList(user, true);
         }
       });
     });
