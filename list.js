@@ -18,7 +18,7 @@ window.list = [
     "tier": "1"
   },
   {
-    "category": "A Book By An Author Whois No Longer Alive",
+    "category": "A Book By An Author Who is No Longer Alive",
     "title": "",
     "completed": "",
     "tier": "1"

@@ -154,6 +154,8 @@ var init = function () {
     var email = $('#login').find('[name="email"]').val();
     var name = $('#login').find('[name="name"]').val();
     if (!!email && !!name) {
+      email = email.toLowerCase();
+      name = name.toLowerCase();
       processLogin([email, name]);
     }
   });
