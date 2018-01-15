@@ -4,15 +4,16 @@
     <title>My #vtReadingChallenge Progress</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/DesignRevision/shards-ui/master/dist/css/shards.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/uxsolutions/bootstrap-datepicker/master/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="app.css">
   </head>
   <body>
     <header>
       <div id="logo"></div>
       <div id="user"></div>
-      <a id="about" href="#" title="About this app">About</a>
-      <a id="share" href="https://twitter.com/home?status=I'm%20doing%20the%20%23vtReadingChallenge%20by%20%40someonehere%20at%20http%3A//url.com" title="Share on Twitter">Share</a>
+      <a id="logout" href="#" title="Log out of the app" style="display: none;">Log Out</a>
+      <!-- <a id="about" href="#" title="About this app">About</a> -->
+      <!-- <a id="share" href="https://twitter.com/home?status=I'm%20doing%20the%20%23vtReadingChallenge%20by%20%40someonehere%20at%20http%3A//url.com" title="Share on Twitter">Share</a> -->
     </header>
 
     <main>
@@ -26,7 +27,7 @@
       </section>
 
       <section id="list" style="display: none;">
-        <ul id="display"></ul>
+        <ul id="display" class="list-unstyled"></ul>
       </section>
 
     </main>
@@ -36,7 +37,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="https://raw.githubusercontent.com/DesignRevision/shards-ui/master/dist/js/shards.min.js"></script>
+    <script src="https://cdn.rawgit.com/uxsolutions/bootstrap-datepicker/master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="list.js"></script>
     <script src="app.js"></script>
   </body>

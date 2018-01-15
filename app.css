@@ -1,17 +1,80 @@
-[data-tier="1"] + [data-tier="2"],
-[data-tier="2"] + [data-tier="3"],
-[data-tier="3"] + [data-tier="4"] {
-  margin-top: 2rem;
+body {
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+}
+ul {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+li {
+  clear: both;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+li input {
+  font-size: 0.8rem;
+}
+[name="title"] {
+  width: 60%;
+  margin-right: 1rem;
 }
 .category {
   display: block;
+  font-size: 0.9rem;
 }
 input[type="checkbox"]:checked + [name="title"] {
   text-decoration: line-through;
 }
 .completed {
   display: none;
+  width: calc(40% - 3rem);
+  padding-left: 1rem;
 }
 input[type="checkbox"]:checked + [name="title"] + .completed {
-  display: inline;
+  display: inline-block;
+}
+[name="title"] {
+  float: left;
+}
+[name="date"] {
+  display: block;
+  width: 100%;
+}
+#logout {
+  float: right;
+}
+#auth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 96%;
+  max-width: 400px;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#auth input,
+#auth button {
+  display: block;
+  margin: 0 auto 1rem;
+}
+h2 {
+  margin-top: 3rem;
+  font-size: 1.25em;
+}
+h3 {
+  font-size: 0.75em;
+}
+.heading {
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid #333;
+}
+#user {
+  float: left;
+}
+main {
+  clear: both;
 }

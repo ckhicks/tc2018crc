@@ -28,16 +28,16 @@ var bookList = [];
 //---------------------------------
 var editBookList = function (user, newUser = false) {
   var list = [];
-  $('#display li').each(function (i, el) {
+  $('#display li[data-tier]').each(function (i, el) {
+    var title = $(el).find('[name="title"]').val();
     var completed = '';
-    var month = $(el).find('[name="month"]').val();
-    var day = $(el).find('[name="day"]').val();
-    if (month !== '' && day !== '') {
-      completed = month + '-' + day;
+    var date = $(el).find('[name="date"]').val();
+    if (title !== '' && date !== '') {
+      completed = date;
     }
     list.push({
       "category": $(el).find('.category').text(),
-      "title": $(el).find('[name="title"]').val(),
+      "title": title,
       "completed": completed,
       "tier": $(el).attr('data-tier')
     });
@@ -71,29 +71,37 @@ var editBookList = function (user, newUser = false) {
 //---------------------------------
 var buildBookList = function (list) {
   var render = '';
+  var tier = 0;
   // build the list
   $.each(list, function (i, obj) {
-    var month = '';
-    var day = '';
+    if (obj.tier > tier) {
+      render += '<li class="heading">';
+      render += '<h2>The ' + bookTiers[tier].name + ' Reader</h2>';
+      render += '<h3>(' + bookTiers[tier].description + ')</h3>';
+      render += '</li>';
+      tier++;
+    }
+    var date = '';
     var completed = '';
     if (!!obj.completed) {
-      month = obj.completed.split('-')[0];
-      day = obj.completed.split('-')[1];
+      date = obj.completed;
       completed = 'checked';
     }
     render += '<li data-tier="' + obj.tier + '">';
     render += '<span class="category">' + obj.category + '</span>';
     render += '<input type="checkbox" name="' + i + '" ' + completed + '>';
     render += '<input type="text" name="title" value="' + obj.title + '">';
-    render += '<span class="completed">';
-    render += '<input type="number" name="month" min="1" max="12" value="' + month + '" placeholder="mm">';
-    render += '<input type="number" name="day" min="1" max="31" value="' + day + '" placeholder="dd">';
-    render += '<input type="number" name="year" value="2018" disabled>';
-    render += '</span>';
+    render += '<span class="completed"><input type="text" name="date" value="' + date + '"></span>';
     render += '</li>';
   });
-  // display the list
+  // add to dom
   $('#display').html(render);
+  // enable datepickers
+  $('input[name="date"]').datepicker({
+    format: 'mm-dd',
+    autoclose: true
+  });
+  // display the list
   $('#list').show();
 };
 
@@ -123,6 +131,8 @@ var fetchBookList = function (user) {
       editBookList(user, true);
     });
   }
+  // body class
+  $('body').addClass('user');
 };
 
 //---------------------------------
@@ -132,8 +142,8 @@ var processLogin = function (creds) {
   var user = window.btoa(app + creds[0] + '||' + creds[1]);
   // store the login
   window.localStorage.setItem('tc2018crc', user);
-  // load their book list
-  fetchBookList(user);
+  // reload and fetch their book list
+  location.reload();
 };
 
 //---------------------------------
@@ -173,14 +183,23 @@ var init = function () {
     // fetch list and hide login
     $('#auth').hide();
     if (username !== '') {
+      username = username.charAt(0).toUpperCase() + username.slice(1);
       $('#user').html(username + "'s Reading List").show();
+      $('#logout').show();
     }
     fetchBookList(user);
   } else {
     // show login and hide list
     $('#auth').show();
     $('#list').hide();
+    $('#logout').hide();
   }
+
+  $('#logout').on('click', function (e) {
+    e.preventDefault();
+    logoutUser();
+    location.reload();
+  });
 };
 
 //---------------------------------
