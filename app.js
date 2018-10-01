@@ -44,7 +44,7 @@ var editBookList = function (user, newUser = false) {
       "tier": $(el).attr('data-tier')
     });
   });
-  $('#total').html(total);
+  $('#total strong').html(total);
   // see if they already have an account
   if (!newUser) {
     $.ajax({
@@ -109,7 +109,7 @@ var buildBookList = function (list) {
   // display the list
   $('#list').show();
   // update the total
-  $('#total').html(total);
+  $('#total strong').html(total);
 };
 
 //---------------------------------
