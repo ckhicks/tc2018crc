@@ -28,12 +28,14 @@ var bookList = [];
 //---------------------------------
 var editBookList = function (user, newUser = false) {
   var list = [];
+  var total = 0;
   $('#display li[data-tier]').each(function (i, el) {
     var title = $(el).find('[name="title"]').val();
     var completed = '';
     var date = $(el).find('[name="date"]').val();
     if (title !== '' && date !== '') {
       completed = date;
+      total++;
     }
     list.push({
       "category": $(el).find('.category').text(),
@@ -42,6 +44,7 @@ var editBookList = function (user, newUser = false) {
       "tier": $(el).attr('data-tier')
     });
   });
+  $('#total').html(total);
   // see if they already have an account
   if (!newUser) {
     $.ajax({
