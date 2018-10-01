@@ -73,7 +73,7 @@ h3 {
   padding-bottom: 0.5rem;
   border-bottom: 0.1rem solid #333;
 }
-#user {
+#user, #total {
   float: left;
 }
 main {
