@@ -75,6 +75,7 @@ var editBookList = function (user, newUser = false) {
 var buildBookList = function (list) {
   var render = '';
   var tier = 0;
+  var total = 0;
   // build the list
   $.each(list, function (i, obj) {
     if (obj.tier > tier) {
@@ -89,6 +90,7 @@ var buildBookList = function (list) {
     if (!!obj.completed) {
       date = obj.completed;
       completed = 'checked';
+      total++;
     }
     render += '<li data-tier="' + obj.tier + '">';
     render += '<span class="category">' + obj.category + '</span>';
@@ -106,6 +108,8 @@ var buildBookList = function (list) {
   });
   // display the list
   $('#list').show();
+  // update the total
+  $('#total').html(total);
 };
 
 //---------------------------------
